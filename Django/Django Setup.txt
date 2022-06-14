@@ -4,6 +4,7 @@
 #### ACTIVATE VIRTUAL ENVIROMENT #####
 => navigate to script folder venv\Script\
 => activate
+=> LINUX : source venv/bin/activate
 
 #### DEACTIVATE VIRTUAL ENVIROMENT ####
 => navigate venv 
