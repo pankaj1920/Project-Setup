@@ -4,7 +4,11 @@
 #### ACTIVATE VIRTUAL ENVIROMENT #####
 => navigate to script folder venv\Script\
 => activate
-=> LINUX : source venv/bin/activate
+=> LINUX : source venv/bin/activate OR 
+=> Linux : . my_env_name/bin/activate
+=> Window navigate to script folder venv\Script\
+=> activate
+
 
 #### DEACTIVATE VIRTUAL ENVIROMENT ####
 => navigate venv 
@@ -33,7 +37,8 @@
 
 ####Creating New Django App####
 => navigate to the dir which contain manage.py file
-=> pythin manage.py startapp appName
+=> pythin manage.py startapp appName OR
+=> django-admin startapp appName
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Connect Django project to MySQL +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -41,6 +46,11 @@ We need a MySQL Client to work with MySQL database.
 In this tutorial, we’re gonna use pymysql.
 => navigate to project directory i.e where venv is installed
 => pip install mysqlclient
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Django Cors Headers +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Django Cors Header
+=> pip install django-cors-headers
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Dry Run Migration Table +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
