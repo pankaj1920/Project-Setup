@@ -57,3 +57,13 @@ Django Cors Header
 
 ###### see the table structure before migrating #########
 => python manage.py makemigrations --dry-run --verbosity 3
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Python +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+######### Runserver in diffrent port ######
+=> Ip adder (Widnow) ipconfig
+=> Ip address(Linux) ip a
+=> python3 manage.py runserver 192.168.1.245:0000
+
+
+
