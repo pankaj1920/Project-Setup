@@ -63,7 +63,7 @@ Django Cors Header
 ######### Runserver in diffrent port ######
 => Ip adder (Widnow) ipconfig
 => Ip address(Linux) ip a
-=> python3 manage.py runserver 192.168.1.245:0000
+=> python3 manage.py runserver 192.168.1.245:8080
 
 
 
