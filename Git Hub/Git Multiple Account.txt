@@ -1,0 +1,75 @@
+
+
+################################# GITHUB MULTIPLE ACCOUNT ########################################
+
+https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/
+https://res.cloudinary.com/da8kiytlc/image/upload/v1647871440/Cheatsheets/GitGuardian_GitHub_Accounts_Cheatsheet.pdf
+https://www.youtube.com/watch?v=J63meQ83yyI
+
+1. Generating the SSH keys
+=> cd ~/.ssh
+=> ssh-keygen -t rsa -C "bohrapankaj1920@gmail.com" -f "Bohra" 
+=> ssh-keygen -t rsa -C "pankaj.bohra@finnovity.in" -f "Pankaj Finnovity"
+
+2. Registering the new SSH Keys with the ssh-agent
+
+=> ssh-add -K ~/.ssh/Bohra
+=> ssh-add -K ~/.ssh/Pankaj\ Finnovity
+
+3. Adding the new SSH key to the corresponding GitHub account
+**Copy the public key pbcopy < ~/.ssh/id_rsa.pub and then log in to your personal GitHub account:**
+
+ => macOS : pbcopy < ~/.ssh/Bohra.pub
+=> Linux : xclip -sel clip < ~/.ssh/<created_key>.pub
+=> Windows : cat ~/.ssh/<created_key>.pub | clip
+
+=> xclip -sel clip < ~/.ssh/Bohra.pub 
+=> xclip -sel clip < ~/.ssh/Pankaj\ Finnovity.pub
+
+	1.) Go to Settings
+    2.) Select SSH and GPG keys from the menu to the left.
+    3.) Click on New SSH key, provide a suitable title, and paste the key in the box below
+    4.) Click Add key — and you’re done!
+	
+	
+4. Creating the SSH config File
+Here we are actually adding the SSH configuration rules for different hosts, stating which identity file to use for which domain
+
+=> cd ~/.ssh/
+=> touch config           // Creates the file if not exists
+=> code config            // Opens the file in VS code, use any editor
+
+# Personal account, - the default config
+Host github.com-bohra
+   HostName github.com
+   User git
+  IdentityFile ~/.ssh/id_rsa (IdentityFile ~/.ssh/Bohra)
+   
+# Work account-1
+Host github.com-pankajfinnovity
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_work_user1 (IdentityFile ~/.ssh/PankajFinnovity)
+   
+5. Making default account global
+
+=> git config --global user.name "bohrafinnovity"
+=> git config --global user.email "pankaj.bohra@finnovity"
+
+
+6. Clone repository with secondary account
+
+=> git clone git@github.com-{name saved in git config}:pankaj1920/Vs-Code-Theme.git abc
+=>git clone git@github.com-bohra:pankaj1920/Vs-Code-Theme.git abc
+=> git clone git@github.com-pankajfinnovity:bohrafinnovity/Arthpay.git
+
+7. Change Defaut Git Account
+
+xxxxxxx Check Current Git User name xxxxxxx
+=> git config user.name  
+
+xxxxxxx Change Defaut User Name and Email xxxxxxx
+=> git config user.name "pankaj1920"
+=> git config user.email "bohrapankaj1920@gmail"
+
+
