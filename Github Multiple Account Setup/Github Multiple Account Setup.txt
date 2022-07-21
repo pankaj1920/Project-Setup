@@ -1,0 +1,86 @@
+Step 1: Goto .ssh folder and generate ssh keys for all your github accounts
+		=> cd ~/.ssh
+		
+Step 2: Generate SHA keys 
+		 # save as id_rsa_personal
+		=> ssh-keygen -t rsa -b 4096 -C "personal_email_id"
+		
+		# save as id_rsa_work
+		=> ssh-keygen -t rsa -b 4096 -C "work_email_id"
+		
+Step 3: Copy id_rsa_personal.pub and id_rsa_work.pub and add to respective github account.
+			
+			# Generate Key and add to respective github account.
+			=> cat id_rsa_personal.pub
+			=> cat id_rsa_work.pub
+			
+Step 4: Create a Config files where we have to provide github account details
+			=> touch config
+			=> nano config // to open files in editor 
+			
+			## Add host name and ssh keygen
+			# Personal account - default config
+			Host github.com-bohra1920
+			   HostName github.com
+			   User git
+			   IdentityFile ~/.ssh/id_rsa_bohra1920
+			# Work account
+			Host github.com-mahagram 
+			   HostName github.com
+			   User git
+			   IdentityFile ~/.ssh/id_rsa_bohra_finnovity
+
+Step 5: Create common Config files, create .gitconfig for personal and work directory with respective config git host names
+			=> cd ~
+			=> nano ~/.gitconfig
+			
+			**Paste and add details accordingly**
+			[user]
+				name = pankaj1920
+				email = bohrapankaj1920@gmail.com
+			[includeIf "gitdir:~/work/"]
+				path = ~/work/.gitconfig
+				
+				
+			# Create a work Directory where we will keep office config files
+			=> mkdir work
+			=> nano ~/work/.gitconfig
+			
+			**Paste and add details accordingly**
+				[user]
+					name = Bohra Mahagram
+					email = pankaj.bohra@finnovity.in
+					
+					
+Step 6: Goto ssh foler and Add new ssh keys 
+			=>  cd ~/.ssh
+			
+			# Remove all the key identies
+			ssh-add -D
+			
+			#Add one identies at a time
+			=>  ssh-add id_rsa_personal
+			#Add one identies at a time
+			=>  ssh-add id_rsa_work
+			
+			Check all the identies added successfully
+			=> ssh-add -l
+			
+Step 7:  Check configuration is right by pinging to github with below commands
+			# this id we created at step 4
+			=> ssh -T github.com-bohra1920 
+			=> ssh -T github.com-mahagram 
+			
+Step 8: Always clone repo by adding hostname in remote url
+e.g. git@github.com to git@github.com-personal
+
+	#Clone
+	=> git clone git@github.com-bohra1920:pankaj1920/Project-Setup.git
+	=> git clone git@github.com-mahagram:bohrafinnovity/Arthpay.git
+	
+	
+
+##################### Add new remote and pull ##################################
+ => git remote add pankaj git@github.com-mahagram:TeamSecurePayment/spayu.git
+ => git pull pankaj main
+
