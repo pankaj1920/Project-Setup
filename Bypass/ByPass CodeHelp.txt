@@ -1,0 +1,57 @@
+
+// GET LOCAL STORAGE
+Object.keys(localStorage).map((key)=>{
+    // console.log(key)
+    // console.log(localStorage.getItem(key))
+    // localStorage.setItem()
+    console.log(`localStorage.setItem("${key}","${localStorage.getItem(key)}")`)
+
+})
+
+
+//GET SESSION
+Object.keys(sessionStorage).map((key)=>{
+    // console.log(key)
+    // console.log(localStorage.getItem(key))
+    // localStorage.setItem()
+    console.log(`sessionStorage.setItem("${key}","${sessionStorage.getItem(key)}")`)
+
+})
+
+
+//GET COOKIES
+
+const getCookies = (name) => document.cookie.split('; ').find(cookie => cookie.startsWith(name + '=')).split('=')[1];
+
+function getAllCookies() {
+  const cookies = document.cookie.split(';');
+  const cookieObj = {};
+
+ 
+
+  cookies.forEach((cookie) => {
+    const [name, value] = cookie.trim().split('=');
+    cookieObj[name] = decodeURIComponent(value);
+  });
+
+ 
+
+  return cookieObj;
+}
+
+ 
+
+// Example usage:
+const allCookies = getAllCookies();
+Object.keys(allCookies).map((key,value)=>{
+     // console.log(key)
+    console.log(`document.cookie = "${key}=${getCookies(key)}"`)
+})
+
+
+document.cookie = "MUID="
+document.cookie = "c_ujwt="
+document.cookie = "SESSIONID="
+document.cookie = "id="
+document.cookie = "CLID="
+
